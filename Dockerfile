@@ -1,5 +1,12 @@
-FROM python:3-slim
+FROM python:3.11-slim
+
 WORKDIR /programas/ingesta
-RUN pip3 install boto3
+
+# Instalar dependencias de Python
+RUN pip install --no-cache-dir boto3 pandas pymysql
+
+# Copiar el código
 COPY . .
-CMD [ "python3", "./ingesta.py" ]
+
+# Comando de ejecución
+CMD ["python3", "./ingesta.py"]
